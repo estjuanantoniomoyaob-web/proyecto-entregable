@@ -3,9 +3,7 @@ package com.example.controllers;
 import com.example.models.Inscripcion;
 import com.example.repositories.InscripcionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,10 @@ public class InscripcionController {
     @GetMapping
     public List<Inscripcion> getInscripciones() {
         return repo.findAll();
+    }
+
+    @PostMapping
+    public Inscripcion crearInscripcion(@RequestBody Inscripcion i) {
+        return repo.save(i);
     }
 }

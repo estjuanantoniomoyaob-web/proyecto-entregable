@@ -3,9 +3,7 @@ package com.example.controllers;
 import com.example.models.Estudiante;
 import com.example.repositories.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,10 @@ public class EstudianteController {
     @GetMapping
     public List<Estudiante> getEstudiantes() {
         return repo.findAll();
+    }
+
+    @PostMapping
+    public Estudiante crearEstudiante(@RequestBody Estudiante e) {
+        return repo.save(e);
     }
 }
